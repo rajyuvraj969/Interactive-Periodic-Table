@@ -19,9 +19,8 @@ Clone the Repository
 git clone : [https://github.com/your-username/interactive-periodic-table.git
 cd interactive-periodic-table](https://github.com/rajyuvraj969/Interactive-Periodic-Table)
 
-Open in Browser : 
+Open in Browser :  [interactive-periodic-tablechem.netlify.app](https://interactive-periodic-tablechem.netlify.app/)
 
-[interactive-periodic-tablechem.netlify.app](https://interactive-periodic-tablechem.netlify.app/)
 
 📁 Project Structure
 
