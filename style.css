@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+:root {
+  --font-family: 'Inter', sans-serif;
+  --bg-color: #f7f9fc;
+  --element-bg: #ffffff;
+  --element-border: #ddd;
+  --text-color: #1f2937;
+  --tooltip-bg: rgba(31, 41, 55, 0.95);
+  --tooltip-text: #fafafa;
+
+  --alkali-metal: #f44336;
+  --alkaline-earth-metal: #ff7961;
+  --transition-metal: #ffb74d;
+  --post-transition-metal: #4596f6;
+  --metalloid: #8bc34a;
+  --nonmetal: #4caf50;
+  --halogen: #00bcd4;
+  --noble-gas: #9c27b0;
+  --lanthanide: #ff4081;
+  --actinide: #673ab7;
+
+  --element-size: 70px;
+  --gap: 6px;
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background-color: #59c6ee;
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  min-height: 100vh;
+}
+
+main {
+  max-width: 1190px;
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: 900;
+}
+
+#filters {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.filter-btn {
+  padding: 7px 14px;
+  border-radius: 22px;
+  border: 2px solid var(--element-border);
+  background-color: var(--element-bg);
+  color: var(--text-color);
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s ease;
+}
+
+.filter-btn.selected {
+  border-color: var(--text-color);
+  background-color: var(--text-color);
+  color: var(--bg-color);
+}
+
+#periodic-table {
+  display: grid;
+  grid-template-columns: repeat(18, var(--element-size));
+  gap: var(--gap);
+  justify-content: center;
+}
+
+.element {
+  
+  background-color: var(--element-bg);
+  border: 1.8px solid var(--element-border);
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 0.85rem;
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  position: relative;
+  transition: box-shadow 0.25s ease;
+}
+
+.element:hover,
+.element:focus {
+  box-shadow: 0 2px 2px 2px rgba(243, 32, 32, 0.478);
+  z-index: 10;
+  outline: none;
+}
+
+.element.hidden {
+  display: none !important;
+}
+
+.atomic-number {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #6b7280;
+  user-select: none;
+}
+
+.symbol {
+  font-weight: 700;
+  font-size: 1.9rem;
+  line-height: 1;
+  text-align: center;
+  user-select: none;
+  margin-top: 6px;
+}
+
+.name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #374151;
+  text-align: center;
+  margin-top: 4px;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.atomic-mass {
+  font-size: 0.8rem;
+  color: #6b7280;
+  text-align: center;
+  margin-top: 4px;
+  font-style: italic;
+  user-select: none;
+}
+
+/* Category colors */
+.alkali-metal { background-color: var(--alkali-metal); color: white; }
+.alkaline-earth-metal { background-color: var(--alkaline-earth-metal); color: white; }
+.transition-metal { background-color: var(--transition-metal); color: #4e342e; }
+.post-transition-metal { background-color: var(--post-transition-metal); color: white; }
+.metalloid { background-color: var(--metalloid); color: white; }
+.nonmetal { background-color: var(--nonmetal); color: white; }
+.halogen { background-color: var(--halogen); color: white; }
+.noble-gas { background-color: var(--noble-gas); color: white; }
+.lanthanide { background-color: var(--lanthanide); color: white; }
+.actinide { background-color: var(--actinide); color: white; }
+
+#tooltip {
+  position: fixed;
+  pointer-events: none;
+  background-color: var(--tooltip-bg);
+  color: var(--tooltip-text);
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  max-width: 320px;
+  line-height: 1.3;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 20;
+}
+
+#tooltip.show {
+  opacity: 1;
+}
+
+@media (max-width: 800px) {
+  :root {
+    --element-size: 50px;
+    --gap: 4px;
+  }
+  .element {
+    font-size: 0.6rem;
+    padding: 3px 5px;
+  }
+  .symbol {
+    font-size: 1.2rem;
+  }
+  .name {
+    display: none;
+  }
+}
