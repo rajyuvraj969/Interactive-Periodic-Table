@@ -8,7 +8,8 @@
   --text-color: #1f2937;
   --tooltip-bg: rgba(31, 41, 55, 0.95);
   --tooltip-text: #fafafa;
-
+ --element-size: clamp(50px, 6vw, 70px); /* scalable with viewport */
+  --gap: 6px;
   --alkali-metal: #f44336;
   --alkaline-earth-metal: #ff7961;
   --transition-metal: #ffb74d;
@@ -76,10 +77,10 @@ h1 {
 }
 
 #periodic-table {
-  display: grid;
-  grid-template-columns: repeat(18, var(--element-size));
+ display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10px, 5fr));
   gap: var(--gap);
-  justify-content: center;
+  
 }
 
 .element {
@@ -87,8 +88,7 @@ h1 {
   background-color: var(--element-bg);
   border: 1.8px solid var(--element-border);
   border-radius: 6px;
-  padding: 6px 8px;
-  font-size: 0.85rem;
+
   cursor: default;
   display: flex;
   flex-direction: column;
@@ -96,6 +96,8 @@ h1 {
   overflow: hidden;
   position: relative;
   transition: box-shadow 0.25s ease;
+   font-size: clamp(0.6rem, 2vw, 0.85rem);
+  padding: 5px;
 }
 
 .element:hover,
@@ -118,7 +120,7 @@ h1 {
 
 .symbol {
   font-weight: 700;
-  font-size: 1.9rem;
+   font-size: clamp(1.2rem, 4vw, 1.9rem);
   line-height: 1;
   text-align: center;
   user-select: none;
@@ -126,7 +128,7 @@ h1 {
 }
 
 .name {
-  font-size: 0.95rem;
+   font-size: clamp(0.75rem, 2vw, 0.95rem);
   font-weight: 600;
   color: #374151;
   text-align: center;
@@ -174,6 +176,13 @@ h1 {
 
 #tooltip.show {
   opacity: 1;
+}
+
+@media (max-width: 600px) {
+  #tooltip {
+    max-width: 90vw;
+    font-size: 0.75rem;
+  }
 }
 
 @media (max-width: 800px) {
